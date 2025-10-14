@@ -2,7 +2,10 @@
 
 require "../../../bootstrap.php";
 
-// dd($_SERVER['REQUEST_METHOD']);
+if(isEmpty()){
+    flash('message', 'Preencha todos os campos');
+    header('location: /php_pqe/public/?page=contato');
+}
 
 $validate = validate([
     'name' => 's',
@@ -11,5 +14,4 @@ $validate = validate([
     'message' => 's',
 ]);
 
-dd($validate->name);
 
