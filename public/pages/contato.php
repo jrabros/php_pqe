@@ -1,6 +1,6 @@
 <h2>Contato</h2>
 
-<form action="pages/forms/contato.php" method="post" role="form">
+<form action="pages/forms/contato.php" method="GET" role="form">
 
     <div class="form-group">
         <label for="">Nome</label>
