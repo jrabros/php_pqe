@@ -15,7 +15,7 @@ function send(array $data){
     $email->Username = 'meu -email';
     $email->Password = 'senhasenha';
     $email->isHTML(true);
-    $email->setFrom('joaopilzbarros@gmail.com');
+    $email->setFrom('meu e-mail');
     $email->FromName = $data['quem'];
     $email->addAddress($data['para']);
     $email->Body = $data['mensagem'];
