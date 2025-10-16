@@ -14,3 +14,11 @@ function request(){
 
     return $_GET;
 }
+
+function redirect ($target){
+    header("location: /php_pqe/public/?page={$target}");
+}
+
+function redirectToHome(){
+    header("location:/");
+}

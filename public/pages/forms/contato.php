@@ -4,7 +4,7 @@ require "../../../bootstrap.php";
 
 if(isEmpty()){
     flash('message', 'Preencha todos os campos');
-    header('location: /php_pqe/public/?page=contato');
+    return redirect("contato");
 }
 
 $validate = validate([
@@ -14,4 +14,14 @@ $validate = validate([
     'message' => 's',
 ]);
 
+$data = [
+    'quem' => $validate->email,
+    'para' => $validate->email,
+    'mensagem' => $validate->message,
+    'assunto' => $validate->subject,
+];
 
+if(send($data)){
+    flash('message' , 'Email enviado com sucesso', 'success');
+    return redirect("contato");
+}
