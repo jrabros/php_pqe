@@ -4,7 +4,7 @@ require "../../../bootstrap.php";
 
 if(isEmpty()){
     flash('message', 'Preencha todos os campos');
-    return redirect("contato");
+    return redirect("create_user");
 }
 
 $validate = validate([
@@ -16,12 +16,10 @@ $validate = validate([
 
 $cadastrado = create('users', $validate);
 
-dd($cadastrado);
+if($cadastrado){
+    flash('message', 'Cadastrado com sucesso', 'success');
+    return redirect("create_user");
+}
 
-// if($cadastrado){
-//     flash('message', 'Cadastrado com sucesso', 'success');
-//     return redirect("create_user");
-// }
-
-// flash('message', 'Falha ao cadastrar');
-// redirect("create_user");
+flash('message', 'Falha ao cadastrar');
+redirect("create_user");

@@ -1,3 +1,5 @@
+<?php echo get('message')?>
+
 <form action="pages/forms/create_user.php" method="post" role="form">
 
     <div class="form-group">
