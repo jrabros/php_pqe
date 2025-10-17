@@ -30,8 +30,33 @@ function all($table){
     return $list->fetchAll();
 }
 
-function update(){
+function update($table, $fields, $where){
+    if(!is_array($fields)){
+        $fields = (array) $fields;
+    }
+    $pdo = connect();
+    $data = array_map(function($field){
+        return "{$field} =:{$field}";
+    }, array_keys($fields));
 
+    $sql = "update {$table} set ";
+    $sql .= implode(', ', $data);
+    $sql .= " where {$where[0]} = :{$where[0]}";
+
+    $data = array_merge($fields, [$where[0]=>$where[1]]);
+
+    // dd($data);
+
+    $update = $pdo->prepare($sql);
+
+    // dd($update);
+    $update->execute($data);
+
+    return $update->rowCount();
+
+    
+
+    
 }
 
 function find($table,$field,$value){
@@ -47,6 +72,12 @@ function find($table,$field,$value){
     return $find->fetch();
 }
 
-function delete(){
+function delete($table,$field,$value){
+    $pdo = connect();
+    $sql = "delete from {$table} where {$field} = :{$field}";
+    $delete = $pdo->prepare($sql);
+    $delete->bindValue($field, $value);
+
+    return $delete->execute();
 
 }

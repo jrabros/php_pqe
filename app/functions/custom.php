@@ -20,5 +20,5 @@ function redirect ($target){
 }
 
 function redirectToHome(){
-    header("location:/");
+    header("location: /php_pqe/public");
 }

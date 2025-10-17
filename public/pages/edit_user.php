@@ -22,10 +22,5 @@ $user = find('users', 'id', $_GET['id']);
         <input type="text" class="form-control" name="email" value="<?php echo $user->email?>" placeholder="Digite o e-mail">
     </div>
 
-    <div class="form-group">
-        <label for="">Senha</label>
-        <input type="text" class="form-control" name="password" placeholder="Digite a senha">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Atualizar</button>
 </form>
