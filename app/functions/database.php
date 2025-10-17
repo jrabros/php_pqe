@@ -52,9 +52,7 @@ function update($table, $fields, $where){
     // dd($update);
     $update->execute($data);
 
-    return $update->rowCount();
-
-    
+    return $update->rowCount();  
 
     
 }
